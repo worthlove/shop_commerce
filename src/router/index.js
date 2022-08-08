@@ -1,22 +1,31 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '@/components/login'
-import Home from "@/views/home";
 
 Vue.use(VueRouter)
 
 const routes = [
   // 当路由遇到 / 则重定向到 /login 路径下
-  {path: '/', redirect: '/login'},
+  { path: '/', redirect: '/login', meta: { title: '电商后台管理平台' } },
   // 登录组件
-  {path: '/login', component: Login},
+  { path: '/login', meta: { title: '登录' }, component: () => import('@/components/login') },
   // Home组件
-  {path: '/home', component: Home},
-];
+  {
+    path: '/home',
+    meta: { title: '主页' },
+    component: () => import('@/views/home'),
+    redirect: '/welcome',
+    // 子路由
+    children: [
+      { path: '/welcome', meta: { title: '欢迎页面' }, component: () => import('@/components/welcome') },
+      { path: '/users', meta: { title: '用户列表' }, component: () => import('@/components/user') }
+    ]
+  }
+]
 const router = new VueRouter({
   routes
 })
 /**
+ * @param 路由导航守卫
  * @param router:路由对象
  * @param to:将要访问的路径
  * @param from:代表从那个路径而来
@@ -26,7 +35,7 @@ router.beforeEach((to, from, next) => {
   if (to.path === '/login') {
     return next()
   } else {
-    const tokens = window.sessionStorage.getItem("token")
+    const tokens = window.sessionStorage.getItem('token')
     if (!tokens) {
       return next('/login')
     } else {

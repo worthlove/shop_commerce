@@ -1,24 +1,24 @@
 <template>
-  <div class="loginApp">
-    <div class="loginBox">
+  <div class='loginApp'>
+    <div class='loginBox'>
       <!-- 头像区域 -->
-      <div class="loginAvatar">
-        <img alt="头像" src="../assets/logo.png">
+      <div class='loginAvatar'>
+        <img alt='头像' src='../assets/logo.png'>
       </div>
       <!-- 登录表单区域 -->
-      <el-form ref="loginFormRef" :model="loginForm" :rules="loginFormRules" class="loginForm" label-width="0px">
+      <el-form ref='loginFormRef' :model='loginForm' :rules='loginFormRules' class='loginForm' label-width='0px'>
         <!-- 用户名： -->
-        <el-form-item prop="username">
-          <el-input v-model="loginForm.username" prefix-icon="iconfont icon-user"></el-input>
+        <el-form-item prop='username'>
+          <el-input v-model='loginForm.username' prefix-icon='iconfont icon-user'></el-input>
         </el-form-item>
         <!-- 密码： -->
-        <el-form-item prop="password">
-          <el-input v-model="loginForm.password" prefix-icon="iconfont icon-3702mima" type="password"></el-input>
+        <el-form-item prop='password'>
+          <el-input v-model='loginForm.password' prefix-icon='iconfont icon-3702mima' type='password'></el-input>
         </el-form-item>
         <!-- 登录/重置 -->
-        <el-form-item class="loginBtn">
-          <el-button type="info" @click="resetFn">重置</el-button>
-          <el-button type="primary" @click="loginFn">登录</el-button>
+        <el-form-item class='loginBtn'>
+          <el-button type='info' @click='resetFn'>重置</el-button>
+          <el-button type='primary' @click='loginFn'>登录</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -58,7 +58,7 @@ export default {
       this.$refs.loginFormRef.resetFields()
     },
     // 点击登录
-    loginFn() {
+    loginFn(key) {
       // 获取登录表单的引用对象,进行登录表单的预验证
       this.$refs.loginFormRef.validate(async valid => {
         if (!valid) {
@@ -77,11 +77,8 @@ export default {
           if (res.meta.status !== 200) {
             this.$message.error('登录失败！')
           } else {
-            this.$message.success('登录成功！')
-            /**
-             * @param 身份验证令牌：token
-             * */
             console.log(res.data.token)
+            this.$message.success('登录成功！')
             // 将从接口中获取的 token令牌 存储到 sessionStorage 中
             window.sessionStorage.setItem('token', res.data.token)
             // 通过编程式导航,跳转后台主页,路由地址: /home
@@ -94,7 +91,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang='less' scoped>
 .loginApp {
   background-color: #2B4B6B;
   height: 100%
