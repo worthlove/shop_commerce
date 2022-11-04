@@ -17,7 +17,9 @@ const routes = [
     // 子路由
     children: [
       { path: '/welcome', meta: { title: '欢迎页面' }, component: () => import('@/components/welcome') },
-      { path: '/users', meta: { title: '用户列表' }, component: () => import('@/components/user') }
+      { path: '/users', meta: { title: '用户列表' }, component: () => import('@/components/user') },
+      { path: '/rights', meta: { title: '权限列表' }, component: () => import('@/components/rights') },
+      { path: '/roles', meta: { title: '角色列表' }, component: () => import('@/components/roles') },
     ]
   }
 ]

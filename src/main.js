@@ -25,7 +25,6 @@ axios.interceptors.request.use(config => {
 /* 挂载原型的属性,通过 this 直接访问 $http */
 Vue.prototype.$http = axios
 Vue.prototype.$video = Video
-
 Vue.config.productionTip = false
 
 new Vue({

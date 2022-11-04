@@ -1,18 +1,17 @@
 <template>
-  <div style='width:100%; height:100%'>
-    <div class='player-container'>
-      <video id='myVideo' class='video-js'>
+  <div style="width: 100%; height: 100%">
+    <div class="player-container">
+      <video id="myVideo" class="video-js">
         <source
-          src='https://video-qn.51miz.com/preview/video/00/00/13/70/V-137009-A4970EDC.mp4'
-          type='video/mp4'
-        >
+          src='https://media.w3.org/2010/05/sintel/trailer.mp4'
+          type="video/mp4"
+        />
       </video>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'welcome',
@@ -47,12 +46,11 @@ export default {
 <style lang='less' scoped>
 .player-container {
   width: 100%;
-  height: 100%
+  height: 100%;
 }
 
 #myVideo {
   width: 100%;
-  height: 100%
+  height: 100%;
 }
-
 </style>

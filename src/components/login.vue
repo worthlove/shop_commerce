@@ -1,24 +1,37 @@
 <template>
-  <div class='loginApp'>
-    <div class='loginBox'>
+  <div class="loginApp">
+    <div class="loginBox">
       <!-- 头像区域 -->
-      <div class='loginAvatar'>
-        <img alt='头像' src='../assets/logo.png'>
+      <div class="loginAvatar">
+        <img alt="头像" src="../assets/logo.png" />
       </div>
       <!-- 登录表单区域 -->
-      <el-form ref='loginFormRef' :model='loginForm' :rules='loginFormRules' class='loginForm' label-width='0px'>
+      <el-form
+        ref="loginFormRef"
+        :model="loginForm"
+        :rules="loginFormRules"
+        class="loginForm"
+        label-width="0px"
+      >
         <!-- 用户名： -->
-        <el-form-item prop='username'>
-          <el-input v-model='loginForm.username' prefix-icon='iconfont icon-user'></el-input>
+        <el-form-item prop="username">
+          <el-input
+            v-model="loginForm.username"
+            prefix-icon="iconfont icon-user"
+          ></el-input>
         </el-form-item>
         <!-- 密码： -->
-        <el-form-item prop='password'>
-          <el-input v-model='loginForm.password' prefix-icon='iconfont icon-3702mima' type='password'></el-input>
+        <el-form-item prop="password">
+          <el-input
+            v-model="loginForm.password"
+            prefix-icon="iconfont icon-3702mima"
+            type="password"
+          ></el-input>
         </el-form-item>
         <!-- 登录/重置 -->
-        <el-form-item class='loginBtn'>
-          <el-button type='info' @click='resetFn'>重置</el-button>
-          <el-button type='primary' @click='loginFn'>登录</el-button>
+        <el-form-item class="loginBtn">
+          <el-button type="info" @click="resetFn">重置</el-button>
+          <el-button type="primary" @click="loginFn">登录</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -26,7 +39,6 @@
 </template>
 
 <script>
-
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'login',
@@ -60,7 +72,7 @@ export default {
     // 点击登录
     loginFn(key) {
       // 获取登录表单的引用对象,进行登录表单的预验证
-      this.$refs.loginFormRef.validate(async valid => {
+      this.$refs.loginFormRef.validate(async (valid) => {
         if (!valid) {
           this.resetFn()
           this.$message.error('请正确填写用户登录信息')
@@ -93,14 +105,14 @@ export default {
 
 <style lang='less' scoped>
 .loginApp {
-  background-color: #2B4B6B;
-  height: 100%
+  background-color: #2b4b6b;
+  height: 100%;
 }
 
 .loginBox {
   width: 450px;
   height: 300px;
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 3px;
   position: absolute;
   left: 50%;
@@ -110,20 +122,20 @@ export default {
   .loginAvatar {
     height: 130px;
     width: 130px;
-    border: 1px solid #EEE;
+    border: 1px solid #eee;
     border-radius: 50%;
     padding: 10px;
-    box-shadow: #DDD;
+    box-shadow: #ddd;
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #FFF;
+    background-color: #fff;
 
     img {
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      background-color: #AAAAAA;
+      background-color: #aaaaaa;
     }
   }
 }

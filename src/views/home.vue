@@ -4,7 +4,7 @@
     <el-header>
       <!-- 头像 -->
       <div>
-        <img alt='头像' src='../assets/logo.png'>
+        <img alt="头像" src="../assets/logo.png" />
       </div>
       <!-- 标题 -->
       <div>
@@ -12,40 +12,48 @@
       </div>
       <!-- 退出按钮 -->
       <div>
-        <el-button type='info' @click='exitFn'>退出</el-button>
+        <el-button type="info" @click="exitFn">退出</el-button>
       </div>
     </el-header>
     <!-- 主体区域  -->
     <el-container>
       <!-- 侧边栏 -->
-      <el-aside :width="isCollapse?'64px':'200px'">
-        <div class='toggleBtn' @click='toggleBtn'>|||</div>
+      <el-aside :width="isCollapse ? '64px' : '200px'">
+        <div class="toggleBtn" @click="toggleBtn">|||</div>
         <!--侧边栏菜单区域-->
         <el-menu
-          :collapse='isCollapse'
-          :collapse-transition='false'
-          :default-active='activePath'
-          :router='true'
-          :unique-opened='true'
-          active-text-color='#409eff'
-          background-color='#545c64'
-          text-color='#fff'
+          :collapse="isCollapse"
+          :collapse-transition="false"
+          :default-active="activePath"
+          :router="true"
+          :unique-opened="true"
+          active-text-color="#409eff"
+          background-color="#545c64"
+          text-color="#fff"
         >
           <!-- 一级菜单 -->
-          <el-submenu v-for='item in menuList' :key='item.id' :index="item.id+''">
+          <el-submenu
+            v-for="item in menuList"
+            :key="item.id"
+            :index="item.id + ''"
+          >
             <!-- 一级菜单的模板区域 -->
-            <template slot='title'>
+            <template slot="title">
               <!-- 图标 -->
-              <i :class='iconsObj[item.id]'></i>
+              <i :class="iconsObj[item.id]"></i>
               <!-- 文本 -->
               <span>{{ item.authName }}</span>
             </template>
             <!-- 二级菜单 -->
-            <el-menu-item v-for='subItem in item.children' :key='subItem.id' :index="'/'+subItem.path"
-                          @click="saveNavStatusFn('/'+subItem.path)">
-              <template slot='title'>
+            <el-menu-item
+              v-for="subItem in item.children"
+              :key="subItem.id"
+              :index="'/' + subItem.path"
+              @click="saveNavStatusFn('/' + subItem.path)"
+            >
+              <template slot="title">
                 <!-- 图标 -->
-                <i class='el-icon-menu'></i>
+                <i class="el-icon-menu"></i>
                 <!-- 文本 -->
                 <span>{{ subItem.authName }}</span>
               </template>
@@ -63,7 +71,6 @@
 </template>
 
 <script>
-
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'home',
@@ -126,11 +133,11 @@ export default {
 <style lang='less' scoped>
 .el-container {
   height: 100%;
-  width: 100%
+  width: 100%;
 }
 
 .el-header {
-  background-color: #373D41;
+  background-color: #373d41;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -146,14 +153,14 @@ export default {
     > img {
       width: 100%;
       height: 100%;
-      border: 1px solid #EEE;
+      border: 1px solid #eee;
       border-radius: 50%;
-      box-shadow: #DDD;
+      box-shadow: #ddd;
     }
 
     > span {
       // 渐变色字体
-      background-image: linear-gradient(to bottom right, #2DE2FF, #8B67FB);
+      background-image: linear-gradient(to bottom right, #2de2ff, #8b67fb);
       -webkit-background-clip: text;
       color: transparent;
       letter-spacing: 0.4em;
@@ -169,10 +176,10 @@ export default {
   background-color: #333744;
 
   .toggleBtn {
-    background-color: #4A5064;
+    background-color: #4a5064;
     font-size: 10px;
     line-height: 24px;
-    color: #FFF;
+    color: #fff;
     text-align: center;
     letter-spacing: 0.2em;
     cursor: pointer;
@@ -191,12 +198,13 @@ export default {
   background-size: 100% 100%;
 }
 
-.el-card__body, .el-main {
+.el-card__body,
+.el-main {
   padding: 0;
 }
 
 .iconfont {
   margin-right: 10px;
-  font-size: 20px
+  font-size: 20px;
 }
 </style>
